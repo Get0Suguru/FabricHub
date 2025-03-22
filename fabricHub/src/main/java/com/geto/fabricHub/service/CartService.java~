@@ -1,0 +1,19 @@
+package com.geto.fabricHub.service;
+
+import com.geto.fabricHub.dto.AddItemRequest;
+import com.geto.fabricHub.exception.CartItemException;
+import com.geto.fabricHub.exception.ProductException;
+import com.geto.fabricHub.exception.UserException;
+import com.geto.fabricHub.model.Cart;
+import com.geto.fabricHub.model.User;
+
+public interface CartService {
+
+    public Cart createCart(User user);
+
+    public String addCartItem(User user, AddItemRequest req) throws ProductException, CartItemException, UserException;
+
+    public Cart findUserCart(Long userId);
+
+    public String clearCart(Long cartId) throws CartItemException, UserException;
+}

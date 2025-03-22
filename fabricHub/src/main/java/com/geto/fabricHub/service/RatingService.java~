@@ -1,0 +1,16 @@
+package com.geto.fabricHub.service;
+
+import com.geto.fabricHub.dto.RatingReq;
+import com.geto.fabricHub.exception.ProductException;
+import com.geto.fabricHub.model.Rating;
+import com.geto.fabricHub.model.User;
+
+import java.util.List;
+
+public interface RatingService {
+
+    public Rating createRating(RatingReq req, User user) throws ProductException;
+
+    // to get a product's all rating
+    public List<Rating> getAllRatings(Long productId,)
+}
