@@ -1,0 +1,37 @@
+package com.geto.fabricHub.service;
+
+import com.geto.fabricHub.dto.ProductPageResponse;
+import com.geto.fabricHub.dto.ProductDTO;
+import com.geto.fabricHub.dto.ProductResponse;
+import com.geto.fabricHub.exception.ProductException;
+import com.geto.fabricHub.model.Product;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+public interface ProductService {
+
+    List<Product> findAllProducts() throws ProductException;
+
+    Product createProduct(ProductDTO productDto) throws ProductException;
+
+    String deleteProduct(Long productId) throws ProductException;
+
+    String updateProductStock(Long productId, int quantity) throws ProductException;
+
+    ProductResponse findProductDetialsById(Long productId) throws ProductException;
+
+    Product findProductById(Long productId) throws ProductException;
+
+    // filtered && ALL          products
+    ProductPageResponse getAllFilteredProducts(
+            String gender,
+            String category,
+            Integer minPrice,
+            Integer maxPrice,
+            Integer minDiscount,
+            String sort,
+            String color,
+            Pageable pageable
+    ) throws ProductException;
+}

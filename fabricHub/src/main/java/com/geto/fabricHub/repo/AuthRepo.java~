@@ -1,0 +1,4 @@
+package com.geto.fabricHub.repo;
+
+public interface AuthRepo {
+}
