@@ -5,7 +5,7 @@
 ---
 
 ### 🧑‍💻 API flow
-(./screenshots/apiflow.png)
+![API's flow](./screenshots/apiflow.png)
 
 ---
 
@@ -105,19 +105,19 @@
 ## Screenshots
 
 ### 🧑‍💻 Product page
-![Product page](./screenshots/product.jpeg)
+![Product page](./screenshots/product.png)
 
 ### 🧑‍💻 login page
-![Login page](./screenshots/login.jpeg)
+![Login page](./screenshots/login.png)
 
 ### 🧑‍💻 Cart page
-![Cart page](./screenshots/cart.jpeg)
+![Cart page](./screenshots/cart.png)
 
 ### 🧑‍💻 Homepage
-![HOme page](./screenshots/homepage2.jpeg)
+![HOme page](./screenshots/homepage2.png)
 
 ### 🧑‍💻 Rating Review page
-![rating & review page](./screenshots/rating_review.jpeg)
+![rating & review page](./screenshots/rating_review.png)
 
 ### 🧑‍💻 Add Products
 ![Add Product CRUD](./screenshots/add_product.jpeg)
