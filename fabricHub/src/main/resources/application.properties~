@@ -10,4 +10,6 @@ frontend.url=${FRONTEND_URL}
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
+server.port=8081
+
 #springdoc.swagger-ui.path=/auth/docs

@@ -50,7 +50,15 @@ public class AuthServiceImplementation implements AuthService {
             String jwtToken = JWTService.generateToken(loginObj.getEmail());  // this generates token which contains username(which's email in that case) (claims - can add as much i like) ROLE - ig
 
             // set cookie manually for samesite support
-            String cookieValue = String.format("jwtToken=%s; Path=/; HttpOnly; SameSite=Lax", jwtToken);
+
+
+
+//            String cookieValue = String.format("jwtToken=%s; Path=/; HttpOnly; SameSite=Lax", jwtToken);
+//            response.addHeader("Set-Cookie", cookieValue);
+            String cookieValue = String.format(
+                    "jwtToken=%s; Path=/; HttpOnly; Secure; SameSite=None",
+                    jwtToken
+            );
             response.addHeader("Set-Cookie", cookieValue);
             return "Login successful";
         }
