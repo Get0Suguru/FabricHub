@@ -4,6 +4,11 @@
 
 ---
 
+### 🧑‍💻 API flow
+(./screenshots/apiflow.png)
+
+---
+
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -98,6 +103,21 @@
 ---
 
 ## Screenshots
+
+### 🧑‍💻 Product page
+![Product page](./screenshots/product.jpeg)
+
+### 🧑‍💻 login page
+![Login page](./screenshots/login.jpeg)
+
+### 🧑‍💻 Cart page
+![Cart page](./screenshots/cart.jpeg)
+
+### 🧑‍💻 Homepage
+![HOme page](./screenshots/homepage2.jpeg)
+
+### 🧑‍💻 Rating Review page
+![rating & review page](./screenshots/rating_review.jpeg)
 
 ### 🧑‍💻 Add Products
 ![Add Product CRUD](./screenshots/add_product.jpeg)
