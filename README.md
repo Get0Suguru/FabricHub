@@ -1,6 +1,6 @@
 ## Overview
 
-**fabricHub** is a modern e-commerce backend built with Spring Boot. It provides robust APIs for user authentication, product management, order processing, cart operations, reviews, and ratings. Designed for scalability and security, fabricHub is ideal for powering online retail platforms.
+**fabricHub** is a modern "Full-Stack" clothing web app built with Spring Boot and React. It provides robust APIs for user authentication, product management, order processing, cart operations, reviews, and ratings. Designed for scalability and security, fabricHub is ideal for powering online retail platforms.
 
 ---
 
