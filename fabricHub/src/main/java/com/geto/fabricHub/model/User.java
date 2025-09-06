@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(
         indexes = {
-                @Index(columnList = "email")
+                @Index(name= "idx_email", columnList = "email")
         }
 )
 public class User {

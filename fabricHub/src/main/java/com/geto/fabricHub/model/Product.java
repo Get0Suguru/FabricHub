@@ -18,6 +18,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
+@Table(
+        indexes = {
+                @Index(name = "idx_product_title", columnList = "title"),
+                @Index(name= "idx_product_brand", columnList = "brand"),
+                @Index(name= "idx_product_color", columnList = "color"),
+
+        }
+)
 public class Product {
 
     @Id
