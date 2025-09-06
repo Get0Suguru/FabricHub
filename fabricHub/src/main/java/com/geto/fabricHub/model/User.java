@@ -15,6 +15,11 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(
+        indexes = {
+                @Index(columnList = "email")
+        }
+)
 public class User {
 
 

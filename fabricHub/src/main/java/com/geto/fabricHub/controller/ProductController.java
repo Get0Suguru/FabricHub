@@ -44,15 +44,16 @@ public class ProductController {
             @RequestParam(defaultValue = "12") int pageSize
 
     ) throws ProductException {
-        System.out.println("values are " + gender + " " + category + " " + minPrice + " " + maxPrice + " " +
-                 minDiscount + " " + color + " " + sort + " " + pageNo + " " + pageSize);
+
+//        System.out.println("values are " + gender + " " + category + " " + minPrice + " " + maxPrice + " " +
+//                 minDiscount + " " + color + " " + sort + " " + pageNo + " " + pageSize);
 
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         ProductPageResponse result = productService.getAllFilteredProducts(gender,
                 category, minPrice, maxPrice,
                 minDiscount, sort, color, pageable);
 
-        System.out.println(result.getContent().size());
+//        System.out.println(result.getContent().size());
 //        System.out.println(result.getContent());       lodu ke beej ye print nahi hote by default (ya to unhe toString method de)
 
         return new ResponseEntity<>(result, HttpStatus.OK);
