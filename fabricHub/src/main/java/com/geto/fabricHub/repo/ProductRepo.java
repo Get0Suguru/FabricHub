@@ -1,6 +1,7 @@
 package com.geto.fabricHub.repo;
 
 import com.geto.fabricHub.model.Product;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,10 +15,14 @@ import java.util.List;
 public interface ProductRepo extends JpaRepository<Product, Long> {
 
     // filter product methods
-
+    @Cacheable(value = "products",
+            key = "{#gender, #category, #minPrice, #maxPrice, #minDiscount, #color, #sort, #pageable.pageNumber, #pageable.pageSize}",
+            unless = "#result == null or #result.isEmpty()")
     @Query("select p from Product p " +
-            "where (p.category.name=:category or p.category.parentCategory.name=:category or " +
-            "p.category.parentCategory.parentCategory.name=:category or :category is null) " +
+            "JOIN FETCH p.category c "+      // eager fetch to avoid N+1
+            "LEFT Join c.parentCategory pc "+
+            "LEFT Join pc.parentCategory ppc "+
+            "WHERE (c.name=:category or pc.name=:category or ppc.name=:category or :category is null)" +
             "and (:gender is null or :gender=p.category.parentCategory.parentCategory.name) "+
             "and (:minPrice is null or p.price>=:minPrice) " +
             "and (:maxPrice is null or p.price<=:maxPrice) " +

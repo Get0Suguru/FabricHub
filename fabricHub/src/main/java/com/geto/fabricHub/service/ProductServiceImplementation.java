@@ -13,6 +13,7 @@ import com.geto.fabricHub.repo.CategoryRepo;
 import com.geto.fabricHub.repo.ProductRepo;
 import com.geto.fabricHub.repo.RatingRepo;
 import com.geto.fabricHub.repo.ReviewRepo;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -113,6 +114,7 @@ public class ProductServiceImplementation implements ProductService {
     throw new ProductException("product of id: " + productId + "doesn't exist");
     }
 
+    @Cacheable(value = "product", key = "#productId", unless = "#result == null")
     @Override
     public Product findProductById(Long productId) throws ProductException{
         Optional<Product> optionalProduct = productRepo.findById(productId);
@@ -129,7 +131,7 @@ public class ProductServiceImplementation implements ProductService {
         return productRepo.searchProduct(queryString, pageable);
     }
 
-
+    @Cacheable(value = "productDetails", key = "#productId", unless = "#result == null")
     @Override
     public ProductResponse findProductDetialsById(Long productId) throws ProductException{
         Optional<Product> optionalProduct = productRepo.findById(productId);
