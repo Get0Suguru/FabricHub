@@ -9,10 +9,67 @@ Developed a sophisticated product browsing system with real-time filtering, pagi
 
 ![Product Catalog](screenshots/product.png)
 
-### **🔧 RESTful API Architecture - Enterprise Grade**
-Designed a robust backend architecture with comprehensive API endpoints for seamless frontend-backend communication.
+### **🔧 RESTful API Architecture**
 
-![API Architecture](screenshots/apiflow.png)
+Designed a scalable backend architecture with clear separation of concerns and optimized request handling:
+
+```mermaid
+graph TD
+    A[Client] -->|HTTP Request| B[API Gateway]
+    B --> C[Authentication Filter]
+    C --> D[Rate Limiting]
+    D --> E[Request Processing]
+    
+    subgraph Controllers Layer
+        E --> F[Auth Controller]
+        E --> G[Product Controller]
+        E --> H[Cart Controller]
+        E --> I[Order Controller]
+        E --> J[User Controller]
+        E --> K[Admin Controller]
+    end
+    
+    subgraph Service Layer
+        F --> L[Auth Service]
+        G --> M[Product Service]
+        H --> N[Cart Service]
+        I --> O[Order Service]
+        J --> P[User Service]
+        K --> Q[Admin Service]
+    end
+    
+    subgraph Data Access Layer
+        L --> R[JPA Repository]
+        M --> R
+        N --> R
+        O --> R
+        P --> R
+        Q --> R
+    end
+    
+    R --> S[(MySQL Database)]
+    
+    %% Performance Optimizations
+    style M fill:#e6f3ff,stroke:#333
+    style R fill:#e6f3ff,stroke:#333
+    
+    %% Caching Layer
+    M -->|Cache Miss| T[Caffeine Cache]
+    T -->|Cache Hit| M
+    T -->|Cache Miss| S
+    
+    %% Performance Monitoring
+    E --> U[Performance Interceptor]
+    U -->|Metrics| V[Actuator Endpoints]
+    U -->|Logs| W[Application Logs]
+```
+
+**Key Components:**
+- **Controllers**: Handle HTTP requests and responses
+- **Services**: Implement business logic and caching
+- **Repositories**: Data access with JPA
+- **Caching**: Reduces database load with intelligent invalidation
+- **Monitoring**: Real-time performance metrics and logging
 
 ---
 
@@ -33,11 +90,13 @@ Designed a robust backend architecture with comprehensive API endpoints for seam
 
 ## 🏠 **Homepage Showcase**
 
-Created this stunning homepage that showcases the latest fashion trends with an intuitive navigation experience.
+Created this stunning homepage that showcases the latest fashion trends with an intuitive navigation experience and powerful filtering capabilities.
 
 ![Homepage 1](screenshots/homepage1.png)
 
-![Homepage 2](screenshots/homepage2.png)
+*The product listing page with real-time filtering capabilities, allowing users to refine their search by category, price range, color, and more.*
+
+![Filtered Products](screenshots/homepage2.png)
 
 ---
 
@@ -125,15 +184,29 @@ Developed a full order management system from placement to delivery with compreh
 ## 🛠️ **Tech Stack I Used**
 
 ### **Backend (Spring Boot 3.4.4)**
-- **Java 21** - Latest LTS with modern features
-- **Spring Security** - JWT authentication & CORS configuration
-- **Spring Data JPA** - Advanced query methods and pagination
-- **MySQL** - Production-ready database with optimized queries
-- **Hibernate** - ORM with automatic DDL updates
-- **Maven** - Dependency management and build automation
-- **Swagger/OpenAPI** - Comprehensive API documentation
-- **Lombok** - Reduced boilerplate code
-- **Docker** - Containerization ready
+- **Core**
+  - Java 21 - Latest LTS with modern features
+  - Spring Security - JWT authentication & CORS configuration
+  - Spring Data JPA - Advanced query methods and pagination
+  - Hibernate - ORM with second-level cache support
+  
+- **Performance**
+  - Caffeine Cache - High-performance caching layer
+  - QueryDSL - Type-safe queries for complex filtering
+  - Database indexing - Optimized for frequent queries
+  
+- **Infrastructure**
+  - MySQL - Production-ready database with connection pooling
+  - Maven - Dependency management and build automation
+  - Docker - Containerization ready
+  
+- **Monitoring & Docs**
+  - Spring Boot Actuator - Health checks and metrics
+  - Micrometer - Application metrics
+  - Swagger/OpenAPI - Interactive API documentation
+  - Lombok - Reduced boilerplate code
+- **Micrometer** - Application metrics and monitoring
+- **Actuator** - Production-ready features
 
 ### **Frontend (React 19)**
 - **Vite** - Lightning-fast build tool and HMR
@@ -144,6 +217,25 @@ Developed a full order management system from placement to delivery with compreh
 - **React Hook Form** - Efficient form handling
 
 ---
+
+## 📊 **Performance Considerations**
+
+### Caching Strategy
+- Implemented Caffeine cache with 10-minute TTL for product catalog and user sessions
+- Cache invalidation on data updates to ensure consistency
+- Size-based eviction policy (max 500 entries)
+
+### Database Optimizations
+- Added indexes on frequently queried columns
+- Optimized JOIN operations with proper fetching strategies
+- Implemented pagination for large result sets
+- Used batch processing for bulk operations
+
+### Monitoring & Metrics
+- Real-time API performance tracking
+- Slow-query detection and logging
+- Memory and CPU usage monitoring
+- Endpoint-specific metrics for continuous optimization
 
 ## 🚀 **How to Run My Project**
 
