@@ -61,6 +61,13 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+<!--            For AWS S3 keyless -->
+		<dependency>
+    			<groupId>software.amazon.awssdk</groupId>
+		    	<artifactId>s3</artifactId>
+    			<version>2.25.0</version>
+		</dependency>
+
 
 <!--		For Lombok	-->
 		<dependency>
