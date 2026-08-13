@@ -34,3 +34,6 @@ build/
 
 ### ENV variables ###
 .env
+
+## Docker shi ##
+Dockerfile
