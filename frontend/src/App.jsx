@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './customer/components/Navigation/NavBar.jsx';
 import './App.css'
 import HomePage from './customer/pages/HomePage/HomePage.jsx';
@@ -59,6 +59,7 @@ function App() {
             />
             <main className="flex-grow"> {/* Main content area that expands */}
               <Routes>
+                <Route path="/" element={<Navigate to="/home" replace />} />
                 <Route path="/addproduct" element={<AddProductPage />} />
                 <Route path="/home" element={<HomePage/>}/>
                 <Route path="/product/:id" element={<ProductDetails/>}/>
