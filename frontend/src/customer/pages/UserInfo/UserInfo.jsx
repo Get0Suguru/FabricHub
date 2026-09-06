@@ -60,7 +60,12 @@ const UserInfo = () => {
         setUserData(response.data);
       } catch (err) {
         console.error('Error fetching user profile:', err);
-        setError(err.response?.data?.message || 'Failed to fetch user profile. Please try again.');
+        const status = err.response?.status;
+        setError(
+          status === 403
+            ? 'Your session is missing or expired. Please log in again to view your profile.'
+            : err.response?.data?.message || `Failed to fetch user profile${status ? ` (HTTP ${status})` : ''}. Please try again.`
+        );
       } finally {
         setLoading(false);
       }

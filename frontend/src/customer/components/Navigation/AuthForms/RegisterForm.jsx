@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc"; // Google icon from react-icons
 import axios from "axios";
 import { Snackbar, Paper, Typography, Box } from "@mui/material";
 import { CheckCircleOutline as CheckCircleOutlineIcon, ErrorOutline as ErrorOutlineIcon } from "@mui/icons-material";
@@ -115,18 +114,6 @@ export const RegisterForm = ({ onSwitch }) => {
       <Typography variant="h5" component="h2" sx={{ fontWeight: 'semibold', mb: 2, textAlign: 'center' }}>
         Create Account
       </Typography>
-      <button
-        type="button"
-        className="flex items-center justify-center w-full border border-gray-300 rounded-md py-2 mb-4 hover:bg-gray-100"
-        // onClick={() => { /* TODO: Implement Google OAuth */ }}
-        disabled // Disabled for now as it's not implemented
-      >
-        <FcGoogle size={24} className="mr-2" />
-        Continue with Google
-      </button>
-      <Box component="div" sx={{ textAlign: 'center', mb: 2, color: 'grey.600' }}>
-        OR
-      </Box>
 
       <form onSubmit={handleRegisterSubmit} style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <input

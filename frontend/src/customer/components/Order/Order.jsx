@@ -23,7 +23,12 @@ const Order = () => {
         setOrders(response.data || []); 
       } catch (err) {
         console.error('Error fetching orders:', err);
-        setError(err.response?.data?.message || 'Failed to fetch orders. Please try again later.');
+        const status = err.response?.status;
+        setError(
+          status === 403
+            ? 'Your session is missing or expired. Please log in again to view your orders.'
+            : err.response?.data?.message || `Failed to fetch orders${status ? ` (HTTP ${status})` : ''}. Please try again later.`
+        );
       } finally {
         setLoading(false);
       }

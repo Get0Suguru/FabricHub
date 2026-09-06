@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc"; // Google icon from react-icons
 import axios from "axios";
 import { Snackbar, Paper, Typography, Box } from "@mui/material";
 import { CheckCircleOutline as CheckCircleOutlineIcon, ErrorOutline as ErrorOutlineIcon, LockOpen as LockOpenIcon } from "@mui/icons-material";
@@ -32,7 +31,6 @@ export const LoginForm = ({ onSwitch, toggleLogin }) => {
     }
 
     try {
-      // eslint-disable-next-line no-unused-vars
       const _response = await axios.post("/api/auth/login", loginData, { withCredentials: true });
 
       // Assuming successful login if we reach here without an error and backend handles tokens
@@ -82,17 +80,6 @@ export const LoginForm = ({ onSwitch, toggleLogin }) => {
       <Typography variant="h5" component="h2" sx={{ fontWeight: 'semibold', mb: 2, textAlign: 'center' }}>
         Login to Your Account
       </Typography>
-      <button
-        type="button"
-        className="flex items-center justify-center w-full border border-gray-300 rounded-md py-2 mb-4 hover:bg-gray-50 transition-colors duration-150"
-        disabled // Google OAuth not implemented
-      >
-        <FcGoogle size={24} className="mr-2" />
-        Continue with Google
-      </button>
-      <Box component="div" sx={{ textAlign: 'center', mb: 2, color: 'grey.600' }}>
-        OR
-      </Box>
 
       <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <input
